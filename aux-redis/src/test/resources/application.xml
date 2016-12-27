@@ -1,46 +1,10 @@
-# Jedisx
-Simple JedisTemplate Client for Java ,Easy to use Anywhere ;Also Easy integrate with Spring Framework ;
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       default-lazy-init="false"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 
 
-
-# Redis Sentinels Mode
-
-
-
-
-# How To Use
-
-## Use With Java Application
-
-```
-    @Test
-    public void testSingleMode () {
-
-        // new instance
-        JedisTemplate jedisTemplate = new JedisTemplate();
-
-        // set params
-        jedisTemplate.setStartupMode(JedisTemplate.StartupMode.single);
-        jedisTemplate.setHost("192.168.20.75");
-        jedisTemplate.setPort(6379);
-        jedisTemplate.setCheck(true);
-
-        // init 
-        jedisTemplate.init();
-
-        // do sth.
-        Assert.assertTrue(jedisTemplate.set("B", "B"));
-        Assert.assertEquals("B", jedisTemplate.get("B"));
-
-        // destroy 
-        jedisTemplate.destory();
-    }
-
-```
-
-
-## Use With Spring Integrate
-```
     <!--配置初始化JedisTemplate -->
     <bean id="jedisTemplate" class="xyz.vopen.auxiliaries.redis.JedisTemplate" init-method="init" destroy-method="destory">
 
@@ -82,4 +46,5 @@ Simple JedisTemplate Client for Java ,Easy to use Anywhere ;Also Easy integrate 
         <property name="sentinels" value="192.168.20.32:26378,192.168.20.32:36378,192.168.20.32:46378"/>
 
     </bean>
-```
+
+</beans>
