@@ -1,4 +1,4 @@
-package xyz.vopen.auxiliaries.redis;
+package io.github.ivetech.auxiliaries.redis;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

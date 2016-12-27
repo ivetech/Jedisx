@@ -1,4 +1,4 @@
-package xyz.vopen.auxiliaries.redis;
+package io.github.ivetech.auxiliaries.redis;
 
 import org.apache.commons.pool2.PooledObject;
 import org.apache.commons.pool2.PooledObjectFactory;
@@ -33,7 +33,7 @@ import java.util.regex.Pattern;
  * 整合Spring-单机配置样例:<br/>
  * <pre>
  *      &lt;!--配置初始化JedisTemplate --&gt;
- *      &lt;bean id="jedisTemplate" class="xyz.vopen.auxiliaries.redis.JedisTemplate" init-method="init" destroy-method="destory"&gt;
+ *      &lt;bean id="jedisTemplate" class="io.github.ivetech.auxiliaries.redis.JedisTemplate" init-method="init" destroy-method="destory"&gt;
  *
  *         &lt;!--
  *              是否开启懒加载配置
@@ -67,7 +67,7 @@ import java.util.regex.Pattern;
  * 整合Spring-集群配置样例:<br/>
  * <pre>
  *      &lt;!--配置初始化JedisTemplate --&gt;
- *      &lt;bean id="jedisTemplate" class="xyz.vopen.auxiliaries.redis.JedisTemplate" init-method="init" destroy-method="destory"&gt;
+ *      &lt;bean id="jedisTemplate" class="io.github.ivetech.auxiliaries.redis.JedisTemplate" init-method="init" destroy-method="destory"&gt;
  *
  *         &lt;!--
  *              是否开启懒加载配置
@@ -315,7 +315,7 @@ public class JedisTemplate {
 
         private String password;
 
-        private Set<xyz.vopen.auxiliaries.redis.JedisTemplate.ShardedJedisSentinelPool.MasterListener> masterListeners = new HashSet<xyz.vopen.auxiliaries.redis.JedisTemplate.ShardedJedisSentinelPool.MasterListener>();
+        private Set<JedisTemplate.ShardedJedisSentinelPool.MasterListener> masterListeners = new HashSet<JedisTemplate.ShardedJedisSentinelPool.MasterListener>();
 
         private volatile List<HostAndPort> currentHostMasters;
 
@@ -357,7 +357,7 @@ public class JedisTemplate {
         }
 
         public void destroy () {
-            for (xyz.vopen.auxiliaries.redis.JedisTemplate.ShardedJedisSentinelPool.MasterListener m : masterListeners) {
+            for (JedisTemplate.ShardedJedisSentinelPool.MasterListener m : masterListeners) {
                 m.shutdown();
             }
 
@@ -373,7 +373,7 @@ public class JedisTemplate {
                 }
                 logger.info("Created ShardedJedisPool to master at [" + sb.toString() + "]");
                 List<JedisShardInfo> shardMasters = makeShardInfoList(masters);
-                initPool(poolConfig, new xyz.vopen.auxiliaries.redis.JedisTemplate.ShardedJedisSentinelPool.ShardedJedisFactory(shardMasters, Hashing.MURMUR_HASH, null));
+                initPool(poolConfig, new JedisTemplate.ShardedJedisSentinelPool.ShardedJedisFactory(shardMasters, Hashing.MURMUR_HASH, null));
                 currentHostMasters = masters;
             }
         }
@@ -465,7 +465,7 @@ public class JedisTemplate {
                 logger.info("Starting Sentinel listeners...");
                 for (String sentinel : sentinels) {
                     final HostAndPort hap = toHostAndPort(Arrays.asList(sentinel.split(":")));
-                    xyz.vopen.auxiliaries.redis.JedisTemplate.ShardedJedisSentinelPool.MasterListener masterListener = new xyz.vopen.auxiliaries.redis.JedisTemplate.ShardedJedisSentinelPool.MasterListener(masters, hap.getHost(), hap.getPort());
+                    JedisTemplate.ShardedJedisSentinelPool.MasterListener masterListener = new JedisTemplate.ShardedJedisSentinelPool.MasterListener(masters, hap.getHost(), hap.getPort());
                     masterListeners.add(masterListener);
                     masterListener.start();
                 }
@@ -599,7 +599,7 @@ public class JedisTemplate {
                     jedis = new Jedis(host, port);
 
                     try {
-                        jedis.subscribe(new xyz.vopen.auxiliaries.redis.JedisTemplate.ShardedJedisSentinelPool.JedisPubSubAdapter() {
+                        jedis.subscribe(new JedisTemplate.ShardedJedisSentinelPool.JedisPubSubAdapter() {
                             @Override
                             public void onMessage (String channel, String message) {
                                 logger.info("Sentinel " + host + ":" + port + " published: " + message + ".");

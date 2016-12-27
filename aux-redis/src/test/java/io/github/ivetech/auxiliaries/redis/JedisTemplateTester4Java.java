@@ -1,4 +1,4 @@
-package xyz.vopen.auxiliaries.redis;
+package io.github.ivetech.auxiliaries.redis;
 
 import org.junit.Assert;
 import org.junit.Test;

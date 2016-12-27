@@ -6,7 +6,7 @@
 
 
     <!--配置初始化JedisTemplate -->
-    <bean id="jedisTemplate" class="xyz.vopen.auxiliaries.redis.JedisTemplate" init-method="init" destroy-method="destory">
+    <bean id="jedisTemplate" class="io.github.ivetech.auxiliaries.redis.JedisTemplate" init-method="init" destroy-method="destory">
 
         <!--
             是否开启懒加载配置

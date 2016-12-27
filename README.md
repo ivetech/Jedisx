@@ -64,7 +64,7 @@ Simple JedisTemplate Client for Java ,Easy to use Anywhere ;Also Easy integrate 
 ## Use With Spring Integrate
 ```
     <!--配置初始化JedisTemplate -->
-    <bean id="jedisTemplate" class="xyz.vopen.auxiliaries.redis.JedisTemplate" init-method="init" destroy-method="destory">
+    <bean id="jedisTemplate" class="JedisTemplate" init-method="init" destroy-method="destory">
 
         <!--
             是否开启懒加载配置
