@@ -6,9 +6,31 @@ Simple JedisTemplate Client for Java ,Easy to use Anywhere ;Also Easy integrate 
 # Redis Sentinels Mode
 
 
+# Dependency
+
+```
+    <!-- add this jedis lib or not -->
+    <dependency>
+        <groupId>redis.clients</groupId>
+        <artifactId>jedis</artifactId>
+        <version>2.9.0</version>
+    </dependency>
+```
+
 
 
 # How To Use
+
+## Add Dependency
+```
+    <dependency>
+        <groupId>xyz.vopen.auxiliaries</groupId>
+        <artifactId>aux-redis</artifactId>
+        <version>1.1</version>
+    </dependency>   
+    
+```
+
 
 ## Use With Java Application
 
