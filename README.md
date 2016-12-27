@@ -24,7 +24,7 @@ Simple JedisTemplate Client for Java ,Easy to use Anywhere ;Also Easy integrate 
 ## Add Dependency
 ```
     <dependency>
-        <groupId>xyz.vopen.auxiliaries</groupId>
+        <groupId>io.github.ivetech.auxiliaries</groupId>
         <artifactId>aux-redis</artifactId>
         <version>1.1</version>
     </dependency>   
