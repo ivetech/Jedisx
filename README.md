@@ -26,7 +26,7 @@ Simple JedisTemplate Client for Java ,Easy to use Anywhere ;Also Easy integrate 
     <dependency>
         <groupId>io.github.ivetech.auxiliaries</groupId>
         <artifactId>aux-redis</artifactId>
-        <version>1.1</version>
+        <version>1.1-RELEASE</version>
     </dependency>   
     
 ```
