@@ -684,11 +684,11 @@ public class JedisTemplate {
         JedisCommands jedis = null;
         try {
             jedis = getJedisResource();
-            return jedis.expire(key, seconds);
+            if (jedis != null)
+                return jedis.expire(key, seconds);
         } catch (Exception ex) {
             logger.error("EXPIRE error[key=" + key + " seconds=" + seconds
                     + "]" + ex.getMessage(), ex);
-            returnResource(jedis);
         } finally {
             returnResource(jedis);
         }
@@ -710,11 +710,11 @@ public class JedisTemplate {
         JedisCommands jedis = null;
         try {
             jedis = getJedisResource();
-            return jedis.expireAt(key, unixTimestamp);
+            if (jedis != null)
+                return jedis.expireAt(key, unixTimestamp);
         } catch (Exception ex) {
             logger.error("EXPIRE error[key=" + key + " unixTimestamp="
                     + unixTimestamp + "]" + ex.getMessage(), ex);
-            returnResource(jedis);
         } finally {
             returnResource(jedis);
         }
@@ -736,11 +736,11 @@ public class JedisTemplate {
         JedisCommands jedis = null;
         try {
             jedis = getJedisResource();
-            return jedis.ltrim(key, start, end);
+            if (jedis != null)
+                return jedis.ltrim(key, start, end);
         } catch (Exception ex) {
             logger.error("LTRIM 出错[key=" + key + " start=" + start + " end="
                     + end + "]" + ex.getMessage(), ex);
-            returnResource(jedis);
         } finally {
             returnResource(jedis);
         }
@@ -758,10 +758,10 @@ public class JedisTemplate {
         JedisCommands jedis = null;
         try {
             jedis = getJedisResource();
-            return jedis.blpop(3, key);
+            if (jedis != null)
+                return jedis.blpop(3, key);
         } catch (Exception ex) {
             logger.error("blpop error:{}", ex.getMessage());
-            returnResource(jedis);
         } finally {
             returnResource(jedis);
         }
@@ -781,10 +781,10 @@ public class JedisTemplate {
         JedisCommands jedis = null;
         try {
             jedis = getJedisResource();
-            return jedis.scard(key);
+            if (jedis != null)
+                return jedis.scard(key);
         } catch (Exception ex) {
             logger.error("countSet error:{}", ex.getMessage());
-            returnResource(jedis);
         } finally {
             returnResource(jedis);
         }
@@ -822,11 +822,11 @@ public class JedisTemplate {
         JedisCommands jedis = null;
         try {
             jedis = getJedisResource();
-            jedis.sadd(key, value);
+            if (jedis != null)
+                jedis.sadd(key, value);
             return true;
         } catch (Exception ex) {
             logger.error("setList error:{}", ex.getMessage());
-            returnResource(jedis);
         } finally {
             returnResource(jedis);
         }
@@ -845,10 +845,10 @@ public class JedisTemplate {
         JedisCommands jedis = null;
         try {
             jedis = getJedisResource();
-            return jedis.sismember(key, value);
+            if (jedis != null)
+                return jedis.sismember(key, value);
         } catch (Exception ex) {
             logger.error("setList error:{}", ex.getMessage());
-            returnResource(jedis);
         } finally {
             returnResource(jedis);
         }
@@ -865,10 +865,10 @@ public class JedisTemplate {
         JedisCommands jedis = null;
         try {
             jedis = getJedisResource();
-            return jedis.smembers(key);
+            if (jedis != null)
+                return jedis.smembers(key);
         } catch (Exception ex) {
             logger.error("getList error:{}", ex.getMessage());
-            returnResource(jedis);
         } finally {
             returnResource(jedis);
         }
@@ -885,11 +885,11 @@ public class JedisTemplate {
         JedisCommands jedis = null;
         try {
             jedis = getJedisResource();
-            jedis.srem(key, value);
+            if (jedis != null)
+                jedis.srem(key, value);
             return true;
         } catch (Exception ex) {
             logger.error("getList error:{}", ex.getMessage());
-            returnResource(jedis);
         } finally {
             returnResource(jedis);
         }
@@ -940,11 +940,11 @@ public class JedisTemplate {
         JedisCommands jedis = null;
         try {
             jedis = getJedisResource();
-            jedis.lrem(key, count, value);
+            if (jedis != null)
+                jedis.lrem(key, count, value);
             return true;
         } catch (Exception ex) {
             logger.error("getList error:{}", ex.getMessage());
-            returnResource(jedis);
         } finally {
             returnResource(jedis);
         }
@@ -966,11 +966,11 @@ public class JedisTemplate {
         JedisCommands jedis = null;
         try {
             jedis = getJedisResource();
-            return jedis.lrange(key, start, end);
+            if (jedis != null)
+                return jedis.lrange(key, start, end);
         } catch (Exception ex) {
             logger.error("rangeList 出错[key=" + key + " start=" + start
                     + " end=" + end + "]" + ex.getMessage(), ex);
-            returnResource(jedis);
         } finally {
             returnResource(jedis);
         }
@@ -990,10 +990,10 @@ public class JedisTemplate {
         JedisCommands jedis = null;
         try {
             jedis = getJedisResource();
-            return jedis.llen(key);
+            if (jedis != null)
+                return jedis.llen(key);
         } catch (Exception ex) {
             logger.error("countList error:{}", ex.getMessage());
-            returnResource(jedis);
         } finally {
             returnResource(jedis);
         }
@@ -1031,11 +1031,11 @@ public class JedisTemplate {
         JedisCommands jedis = null;
         try {
             jedis = getJedisResource();
-            jedis.lpush(key, value);
+            if (jedis != null)
+                jedis.lpush(key, value);
             return true;
         } catch (Exception ex) {
             logger.error("setList error:{}", ex.getMessage());
-            returnResource(jedis);
         } finally {
             returnResource(jedis);
         }
@@ -1067,10 +1067,10 @@ public class JedisTemplate {
         JedisCommands jedis = null;
         try {
             jedis = getJedisResource();
-            return jedis.lrange(key, 0, -1);
+            if (jedis != null)
+                return jedis.lrange(key, 0, -1);
         } catch (Exception ex) {
             logger.error("getList error:{}", ex.getMessage());
-            returnResource(jedis);
         } finally {
             returnResource(jedis);
         }
@@ -1091,11 +1091,11 @@ public class JedisTemplate {
         JedisCommands jedis = null;
         try {
             jedis = getJedisResource();
-            jedis.hset(domain, key, value);
+            if (jedis != null)
+                jedis.hset(domain, key, value);
             return true;
         } catch (Exception ex) {
             logger.error("setHSet error:{}", ex.getMessage());
-            returnResource(jedis);
         } finally {
             returnResource(jedis);
         }
@@ -1113,10 +1113,10 @@ public class JedisTemplate {
         JedisCommands jedis = null;
         try {
             jedis = getJedisResource();
-            return jedis.hget(domain, key);
+            if (jedis != null)
+                return jedis.hget(domain, key);
         } catch (Exception ex) {
             logger.error("getHSet error:{}", ex.getMessage());
-            returnResource(jedis);
         } finally {
             returnResource(jedis);
         }
@@ -1135,10 +1135,10 @@ public class JedisTemplate {
         long count = 0;
         try {
             jedis = getJedisResource();
-            count = jedis.hdel(domain, key);
+            if (jedis != null)
+                count = jedis.hdel(domain, key);
         } catch (Exception ex) {
             logger.error("delHSet error:{}", ex.getMessage());
-            returnResource(jedis);
         } finally {
             returnResource(jedis);
         }
@@ -1157,10 +1157,10 @@ public class JedisTemplate {
         long count = 0;
         try {
             jedis = getJedisResource();
-            count = jedis.hdel(domain, key);
+            if (jedis != null)
+                count = jedis.hdel(domain, key);
         } catch (Exception ex) {
             logger.error("delHSet error:{}", ex.getMessage());
-            returnResource(jedis);
         } finally {
             returnResource(jedis);
         }
@@ -1179,10 +1179,10 @@ public class JedisTemplate {
         boolean isExist = false;
         try {
             jedis = getJedisResource();
-            isExist = jedis.hexists(domain, key);
+            if (jedis != null)
+                isExist = jedis.hexists(domain, key);
         } catch (Exception ex) {
             logger.error("existsHSet error:{}", ex.getMessage());
-            returnResource(jedis);
         } finally {
             returnResource(jedis);
         }
@@ -1201,20 +1201,21 @@ public class JedisTemplate {
         try {
             int cursor = 0;
             jedis = getJedisResource();
-            ScanParams scanParams = new ScanParams();
-            scanParams.match(match);
-            ScanResult<Map.Entry<String, String>> scanResult;
-            List<Map.Entry<String, String>> list = new ArrayList<Map.Entry<String, String>>();
-            do {
-                scanResult = jedis.hscan(domain, String.valueOf(cursor),
-                        scanParams);
-                list.addAll(scanResult.getResult());
-                cursor = Integer.parseInt(scanResult.getStringCursor());
-            } while (cursor > 0);
-            return list;
+            if (jedis != null) {
+                ScanParams scanParams = new ScanParams();
+                scanParams.match(match);
+                ScanResult<Map.Entry<String, String>> scanResult;
+                List<Map.Entry<String, String>> list = new ArrayList<Map.Entry<String, String>>();
+                do {
+                    scanResult = jedis.hscan(domain, String.valueOf(cursor),
+                            scanParams);
+                    list.addAll(scanResult.getResult());
+                    cursor = Integer.parseInt(scanResult.getStringCursor());
+                } while (cursor > 0);
+                return list;
+            }
         } catch (Exception ex) {
             logger.error("scanHSet error:{}", ex.getMessage());
-            returnResource(jedis);
         } finally {
             returnResource(jedis);
         }
@@ -1234,10 +1235,10 @@ public class JedisTemplate {
         List<String> retList = null;
         try {
             jedis = getJedisResource();
-            retList = jedis.hvals(domain);
+            if (jedis != null)
+                retList = jedis.hvals(domain);
         } catch (Exception ex) {
             logger.error("hvals error:{}", ex.getMessage());
-            returnResource(jedis);
         } finally {
             returnResource(jedis);
         }
@@ -1256,10 +1257,10 @@ public class JedisTemplate {
         Set<String> retList = null;
         try {
             jedis = getJedisResource();
-            retList = jedis.hkeys(domain);
+            if (jedis != null)
+                retList = jedis.hkeys(domain);
         } catch (Exception ex) {
             logger.error("hkeys error:{}", ex.getMessage());
-            returnResource(jedis);
         } finally {
             returnResource(jedis);
         }
@@ -1277,10 +1278,10 @@ public class JedisTemplate {
         long retList = 0;
         try {
             jedis = getJedisResource();
-            retList = jedis.hlen(domain);
+            if (jedis != null)
+                retList = jedis.hlen(domain);
         } catch (Exception ex) {
             logger.error("hkeys error:{}", ex.getMessage());
-            returnResource(jedis);
         } finally {
             returnResource(jedis);
         }
@@ -1299,11 +1300,11 @@ public class JedisTemplate {
         JedisCommands jedis = null;
         try {
             jedis = getJedisResource();
-            jedis.zadd(key, score, value);
+            if (jedis != null)
+                jedis.zadd(key, score, value);
             return true;
         } catch (Exception ex) {
             logger.error("setSortedSet error:{}", ex.getMessage());
-            returnResource(jedis);
         } finally {
             returnResource(jedis);
         }
@@ -1324,14 +1325,14 @@ public class JedisTemplate {
         JedisCommands jedis = null;
         try {
             jedis = getJedisResource();
-            if (orderByDesc) {
-                return jedis.zrevrangeByScore(key, endScore, startScore);
-            } else {
-                return jedis.zrangeByScore(key, startScore, endScore);
-            }
+            if (jedis != null)
+                if (orderByDesc) {
+                    return jedis.zrevrangeByScore(key, endScore, startScore);
+                } else {
+                    return jedis.zrangeByScore(key, startScore, endScore);
+                }
         } catch (Exception ex) {
             logger.error("getSoredSet error:{}", ex.getMessage());
-            returnResource(jedis);
         } finally {
             returnResource(jedis);
         }
@@ -1350,11 +1351,12 @@ public class JedisTemplate {
         JedisCommands jedis = null;
         try {
             jedis = getJedisResource();
-            Long count = jedis.zcount(key, startScore, endScore);
-            return count == null ? 0L : count;
+            if (jedis != null) {
+                Long count = jedis.zcount(key, startScore, endScore);
+                return count == null ? 0L : count;
+            }
         } catch (Exception ex) {
             logger.error("countSoredSet error:{}", ex.getMessage());
-            returnResource(jedis);
         } finally {
             returnResource(jedis);
         }
@@ -1372,11 +1374,12 @@ public class JedisTemplate {
         JedisCommands jedis = null;
         try {
             jedis = getJedisResource();
-            long count = jedis.zrem(key, value);
-            return count > 0;
+            if (jedis != null) {
+                long count = jedis.zrem(key, value);
+                return count > 0;
+            }
         } catch (Exception ex) {
             logger.error("delSortedSet error:{}", ex.getMessage());
-            returnResource(jedis);
         } finally {
             returnResource(jedis);
         }
@@ -1397,14 +1400,14 @@ public class JedisTemplate {
         JedisCommands jedis = null;
         try {
             jedis = getJedisResource();
-            if (orderByDesc) {
-                return jedis.zrevrange(key, startRange, endRange);
-            } else {
-                return jedis.zrange(key, startRange, endRange);
-            }
+            if (jedis != null)
+                if (orderByDesc) {
+                    return jedis.zrevrange(key, startRange, endRange);
+                } else {
+                    return jedis.zrange(key, startRange, endRange);
+                }
         } catch (Exception ex) {
             logger.error("getSoredSetByRange error:{}", ex.getMessage());
-            returnResource(jedis);
         } finally {
             returnResource(jedis);
         }
@@ -1421,10 +1424,10 @@ public class JedisTemplate {
         JedisCommands jedis = null;
         try {
             jedis = getJedisResource();
-            return jedis.zscore(key, member);
+            if (jedis != null)
+                return jedis.zscore(key, member);
         } catch (Exception ex) {
             logger.error("getSoredSet error:{}", ex.getMessage());
-            returnResource(jedis);
         } finally {
             returnResource(jedis);
         }
@@ -1435,11 +1438,13 @@ public class JedisTemplate {
         JedisCommands jedis = null;
         try {
             jedis = getJedisResource();
-            jedis.setex(key, second, value);
-            return true;
+            if (jedis != null) {
+                jedis.setex(key, second, value);
+                return true;
+            }
+            return false;
         } catch (Exception ex) {
             logger.error("set error:{}", ex.getMessage());
-            returnResource(jedis);
         } finally {
             returnResource(jedis);
         }
@@ -1450,11 +1455,13 @@ public class JedisTemplate {
         JedisCommands jedis = null;
         try {
             jedis = getJedisResource();
-            jedis.set(key, value);
-            return true;
+            if (jedis != null) {
+                jedis.set(key, value);
+                return true;
+            }
+            return false;
         } catch (Exception ex) {
             logger.error("set error:{}", ex.getMessage());
-            returnResource(jedis);
         } finally {
             returnResource(jedis);
         }
@@ -1465,11 +1472,11 @@ public class JedisTemplate {
         JedisCommands jedis = null;
         try {
             jedis = getJedisResource();
-            return jedis.get(key) == null ? defaultValue : jedis
-                    .get(key);
+            if (jedis != null)
+                return jedis.get(key) == null ? defaultValue : jedis
+                        .get(key);
         } catch (Exception ex) {
             logger.error("get error:{}", ex.getMessage());
-            returnResource(jedis);
         } finally {
             returnResource(jedis);
         }
@@ -1480,10 +1487,10 @@ public class JedisTemplate {
         JedisCommands jedis = null;
         try {
             jedis = getJedisResource();
-            return jedis.get(key);
+            if (jedis != null)
+                return jedis.get(key);
         } catch (Exception ex) {
             logger.error("get error:{}", ex.getMessage());
-            returnResource(jedis);
         } finally {
             returnResource(jedis);
         }
@@ -1494,11 +1501,11 @@ public class JedisTemplate {
         JedisCommands jedis = null;
         try {
             jedis = getJedisResource();
-            jedis.del(key);
+            if (jedis != null)
+                jedis.del(key);
             return true;
         } catch (Exception ex) {
             logger.error("del error:{}", ex.getMessage());
-            returnResource(jedis);
         } finally {
             returnResource(jedis);
         }
@@ -1509,10 +1516,10 @@ public class JedisTemplate {
         JedisCommands jedis = null;
         try {
             jedis = getJedisResource();
-            return jedis.incr(key);
+            if (jedis != null)
+                return jedis.incr(key);
         } catch (Exception ex) {
             logger.error("incr error:{}", ex.getMessage());
-            returnResource(jedis);
         } finally {
             returnResource(jedis);
         }
@@ -1523,10 +1530,10 @@ public class JedisTemplate {
         JedisCommands jedis = null;
         try {
             jedis = getJedisResource();
-            return jedis.decr(key);
+            if (jedis != null)
+                return jedis.decr(key);
         } catch (Exception ex) {
             logger.error("incr error:{}", ex.getMessage());
-            returnResource(jedis);
         } finally {
             returnResource(jedis);
         }
@@ -1545,13 +1552,22 @@ public class JedisTemplate {
     private void returnResource (JedisCommands jedis) {
         try {
             if (jedis != null) {
-                if (jedis instanceof Jedis) {
-                    ((Jedis) jedis).close();
+                try {
+                    if (jedis instanceof Jedis) {
+//                    ((Jedis) jedis).close();
+                        simpleJedisPool.returnResource((Jedis) jedis);
+                    }
+                } catch (Exception e) {
+
+                }
+                try {
+                    if (jedis instanceof ShardedJedis) {
+//                    ((ShardedJedis) jedis).close();
+                        shardedJedisSentinelPool.returnResource((ShardedJedis) jedis);
+                    }
+                } catch (Exception e) {
                 }
 
-                if (jedis instanceof ShardedJedis) {
-                    ((ShardedJedis) jedis).close();
-                }
             }
         } catch (Exception e) {
         }
@@ -1561,14 +1577,6 @@ public class JedisTemplate {
         try {
             if (shardedJedisSentinelPool != null) {
                 this.shardedJedisSentinelPool.destroy();
-            }
-        } catch (Exception e) {
-
-        }
-
-        try {
-            if (simpleJedisPool != null) {
-                this.simpleJedisPool.destroy();
             }
         } catch (Exception e) {
 

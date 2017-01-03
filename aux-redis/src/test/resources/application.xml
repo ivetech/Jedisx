@@ -18,7 +18,7 @@
         <!-- 连接池公共配置 -->
         <property name="maxTotal" value="200"/>
         <property name="maxIdle" value="100"/>
-        <property name="maxWaitMillis" value="5000"/>
+        <property name="maxWaitMillis" value="-1"/>
         <property name="testOnBorrow" value="true"/>
 
 
