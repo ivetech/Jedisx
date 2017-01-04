@@ -1,4 +1,5 @@
 # Jedisx
+[![Maven Central](https://img.shields.io/badge/release-1.1.1--RELEASE-blue.svg)](https://github.com/ivetech/Jedisx)
 [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)](https://github.com/ivetech/Jedisx)
 [![Coveralls](https://img.shields.io/coveralls/jekyll/jekyll.svg)]([![Travis](https://img.shields.io/travis/rust-lang/rust.svg)](https://github.com/ivetech/Jedisx))
 [![Maven Central](https://img.shields.io/maven-central/v/org.apache.maven/apache-maven.svg)](http://search.maven.org/#artifactdetails%7Cio.github.ivetech.auxiliaries%7Caux-redis%7C1.1.1-RELEASE%7Cjar)
