@@ -95,7 +95,7 @@ Simple JedisTemplate Client for Java ,Easy to use Anywhere ;Also Easy integrate 
 
         <!--
         <property name="mode" value="single"/>
-        <property name="host" value="192.168.20.75"/>
+        <property name="host" value="hostname"/>
         <property name="port" value="6379"/>
         -->
         
@@ -107,7 +107,7 @@ Simple JedisTemplate Client for Java ,Easy to use Anywhere ;Also Easy integrate 
         -->
         <property name="mode" value="sentinels"/>
         <property name="masters" value="master001"/>
-        <property name="sentinels" value="192.168.20.32:26378,192.168.20.32:36378,192.168.20.32:46378"/>
+        <property name="sentinels" value="hostname:26378,hostname:36378,hostname:46378"/>
 
     </bean>
 ```
