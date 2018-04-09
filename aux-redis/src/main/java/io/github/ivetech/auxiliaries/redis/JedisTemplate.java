@@ -158,8 +158,14 @@ public class JedisTemplate {
      */
     public static enum StartupMode {
 
+        /**
+         * 单节点运行
+         */
         single,
 
+        /**
+         * 集群(哨兵)模式运行
+         */
         sentinels;
 
         public static boolean validMode (String mode) {
