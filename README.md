@@ -67,7 +67,7 @@ Simple JedisTemplate Client for Java ,Easy to use Anywhere ;Also Easy integrate 
 
 ## Use With Spring Integrate
 ```xml
-    <!--配置初始化JedisTemplate -->
+    <!--Init JedisTemplate -->
     <bean id="jedisTemplate" class="JedisTemplate" init-method="init" destroy-method="destory">
 
         <!--
@@ -77,7 +77,7 @@ Simple JedisTemplate Client for Java ,Easy to use Anywhere ;Also Easy integrate 
          -->
         <property name="check" value="false"/>
 
-        <!-- 连接池公共配置 -->
+        <!-- Common Params -->
         <property name="maxTotal" value="200"/>
         <property name="maxIdle" value="100"/>
         <property name="maxWaitMillis" value="5000"/>
